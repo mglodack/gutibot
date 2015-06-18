@@ -27,6 +27,10 @@ var capitalizeFirst = function(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+var linkify = function(userName) {
+  return "<@" + userName + "|" + userName + ">";
+}
+
 module.exports = function(req, res, next) {
   var text = req.body.text;
   var userName = req.body.user_name;
@@ -40,7 +44,7 @@ module.exports = function(req, res, next) {
 
   if (userName !== 'slackbot' && matches.length != 0) {
     var payload = {
-      text: "@" + userName + ": " + responseMessage + " I barely know 'er!"
+      text: linkify(userName) + ": " + responseMessage + " I barely know 'er!"
     };
     return res.status(200).json(payload);
   } else {
