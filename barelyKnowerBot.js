@@ -40,7 +40,7 @@ module.exports = function(req, res, next) {
 
   if (userName !== 'slackbot' && matches.length != 0) {
     var payload = {
-      text: responseMessage + " I barely know 'er!"
+      text: "@" + userName + ": " + responseMessage + " I barely know 'er!"
     };
     return res.status(200).json(payload);
   } else {
