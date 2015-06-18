@@ -1,14 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var helloBot = require('./helloBot');
+var barelyKnowerBot = require('./barelyKnowerBot');
 
 var app = express();
 var port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function(req, res) { res.status(200).send('Hello world!'); });
-app.post('/hello', helloBot);
+app.post('/doesheknower', barelyKnowerBot);
 
 app.use(function(err, req, res, next) {
   console.error(err.stack);

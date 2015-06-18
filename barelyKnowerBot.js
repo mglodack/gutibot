@@ -14,7 +14,7 @@ var cleanMatches = function(matches) {
 
 var splitWord = function(word) {
   var suffix = 'er';
-  var prefix = word.split(suffix)[0]; 
+  var prefix = word.split(suffix)[0];
 
   return [prefix, suffix];
 }
