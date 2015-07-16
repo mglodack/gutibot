@@ -1,21 +1,25 @@
-var wasSlackBot = function(username) {
-  return username === 'slackbot';
-}
+(function() {
+  "use strict";
 
-var containsChoice = function(str) {
-  var pattern = /^choice$|^choice[^\w]+|[^\w]+choice[^\w]+|[^\w]choice$/ig;
+  var wasSlackBot = function(username) {
+    return username === "slackbot";
+  };
 
-  return pattern.test(str);
-}
+  var containsChoice = function(str) {
+    var pattern = /^choice$|^choice[^\w]+|[^\w]+choice[^\w]+|[^\w]choice$/ig;
 
-module.exports = function(req, res, next) {
-  var text = req.body.text;
-  var username = req.body.user_name;
+    return pattern.test(str);
+  };
 
-  if (wasSlackBot(username)) return res.status(200).end();
-  if (!containsChoice(text)) return res.status(200).end();
+  module.exports = function(req, res, next) {
+    var text = req.body.text;
+    var username = req.body.user_name;
 
-  var payload = { text: "Sophie's choice!" };
+    if (wasSlackBot(username)) { return res.status(200).end(); }
+    if (!containsChoice(text)) { return res.status(200).end(); }
 
-  return res.status(200).json(payload);
-};
+    var payload = { text: "Sophie's choice!" };
+
+    return res.status(200).json(payload);
+  };
+})();
