@@ -38,7 +38,7 @@
     }
   };
 
-  module.exports = function(req, res, next) {
+  module.exports = function(req, res) {
     var text = req.body.text;
     var username = req.body.user_name;
     var matches = cleanMatches(getMatches(text));

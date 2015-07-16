@@ -11,7 +11,7 @@
     return pattern.test(str);
   };
 
-  module.exports = function(req, res, next) {
+  module.exports = function(req, res) {
     var text = req.body.text;
     var username = req.body.user_name;
 
