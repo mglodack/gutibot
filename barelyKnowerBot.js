@@ -27,27 +27,31 @@ var capitalizeFirst = function(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-var linkify = function(userName) {
-  return "<@" + userName + "|" + userName + ">";
+var linkify = function(username) {
+  if (username.indexOf(".") !== -1) {
+    return "@" + username;
+  } else {
+    return "<@" + username + "|" + username + ">";
+  }
 }
 
 module.exports = function(req, res, next) {
   var text = req.body.text;
-  var userName = req.body.user_name;
+  var username = req.body.user_name;
   var matches = cleanMatches(getMatches(text));
 
-  var responseMessage = matches.map(function(str) {
-    return splitWord(str);
-  }).map(function(parts) {
-    return formatSplitWordParts(parts);
-  }).join(' ');
-
-  if (userName !== 'slackbot' && matches.length != 0) {
-    var payload = {
-      text: linkify(userName) + ": " + responseMessage + " I barely know 'er!"
-    };
-    return res.status(200).json(payload);
-  } else {
+  if (username === "slackbot" || matches.length === 0) {
     return res.status(200).end();
   }
+
+  var responseMessage = matches
+    .map(splitWord)
+    .map(formatSplitWordParts)
+    .join(' ');
+
+  var payload = {
+    text: linkify(username) + ": " + responseMessage + " I barely know 'er!"
+  };
+
+  return res.status(200).json(payload);
 };
