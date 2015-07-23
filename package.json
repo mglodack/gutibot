@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Andrew Seward",
   "license": "ISC",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/awseward/silly-slacker/issues"
   },
-  "homepage": "https://github.com/awseward/silly-slacker#readme"
+  "homepage": "https://github.com/awseward/silly-slacker#readme",
+  "devDependencies": {
+    "jest-cli": "^0.4.16"
+  }
 }
