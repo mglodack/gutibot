@@ -5,9 +5,9 @@ function wasSlackBot(username) {
 }
 
 function containsChoice(str) {
-  const pattern = /^choice$|^choice[^\w]+|[^\w]+choice[^\w]+|[^\w]choice$/ig;
+  const pattern = /[^\w]*choice(s)?/ig;
 
-  return pattern.test(str);
+  return pattern.test(str.trim());
 }
 
 module.exports = {
