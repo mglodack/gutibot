@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/awseward/silly-slacker#readme",
   "devDependencies": {
-    "gulp-task-listing": "^1.0.1"
+    "gulp-task-listing": "^1.0.1",
     "jest-cli": "^0.4.16"
   }
 }

@@ -3,7 +3,7 @@
 
   let express = require("express");
   let bodyParser = require("body-parser");
-  let barelyKnowerBot = require("./barelyKnowerBot");
+  let barelyKnowerBot = require("./barelyKnowerBot").bot;
   let sophieBot = require("./sophieBot");
 
   let app = express();
