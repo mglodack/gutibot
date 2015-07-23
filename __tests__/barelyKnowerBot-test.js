@@ -4,12 +4,14 @@ const srcPath = "../src/barelyKnowerBot";
 
 jest.dontMock(srcPath);
 
-describe("getMatches", function() {
-  it("finds matches", function() {
+describe("getMatches", () => {
+  it("finds matches", () => {
     const getMatches = require(srcPath).getMatches;
-    const expectedResult = ["boer"];
+    const erWord = "cheeseburger";
+    const expected = [erWord];
+    const actual = getMatches(erWord);
 
-    expect(getMatches("boer")).toEqual(expectedResult);
+    expect(actual).toEqual(expected);
   });
 });
 
