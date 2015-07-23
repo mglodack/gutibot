@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  var splitWord = require("src/stringUtils").splitWord;
+  var splitWord = require("./src/stringUtils").splitWord;
 
   function getMatches(str) {
     var pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
