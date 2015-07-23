@@ -4,7 +4,7 @@
   let express = require("express");
   let bodyParser = require("body-parser");
   let barelyKnowerBot = require("./barelyKnowerBot").bot;
-  let sophieBot = require("./sophieBot");
+  let sophieBot = require("./sophieBot").bot;
 
   let app = express();
   let port = process.env.PORT || 3000;
