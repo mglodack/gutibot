@@ -22,8 +22,20 @@
   "bugs": {
     "url": "https://github.com/awseward/silly-slacker/issues"
   },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/lib/es6-jest",
+    "testFileExtensions": [
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "testDirectoryName": "__tests__"
+  },
   "homepage": "https://github.com/awseward/silly-slacker#readme",
   "devDependencies": {
+    "es6-transpiler": "^0.7.18",
     "gulp-task-listing": "^1.0.1",
     "jest-cli": "^0.4.16"
   }

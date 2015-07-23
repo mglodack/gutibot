@@ -2,7 +2,8 @@
   "ecmaFeatures": {
     "arrowFunctions": true,
     "blockBindings": true,
-    "destructuring": true
+    "destructuring": true,
+    "objectLiteralShorthandMethods": true
   },
   "env": {
     "browser": true,
