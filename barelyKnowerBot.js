@@ -1,6 +1,8 @@
 (function() {
   "use strict";
 
+  var splitWord = require("src/stringUtils").splitWord;
+
   function getMatches(str) {
     var pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
 
@@ -15,11 +17,8 @@
     });
   }
 
-  function splitWord(word) {
-    var suffix = "er";
-    var prefix = word.split(suffix)[0];
-
-    return [prefix, suffix];
+  function splitByEr(word) {
+    return splitWord(word, "er");
   }
 
   function formatSplitWordParts(parts) {
@@ -48,7 +47,7 @@
     }
 
     var responseMessage = matches
-      .map(splitWord)
+      .map(splitByEr)
       .map(formatSplitWordParts)
       .join(" ");
 
