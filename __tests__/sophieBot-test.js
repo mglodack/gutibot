@@ -1,14 +1,13 @@
-/*eslint-disable*/
 "use strict";
 
-let srcPath = "../src/sophieBot.js";
+const srcPath = "../src/sophieBot.js";
 
 jest.dontMock(srcPath);
 
 describe("containsChoice", () => {
   it("findes matches", () => {
-    let containsChoice = require(srcPath).containsChoice
-    let expectedResult = true
+    const containsChoice = require(srcPath).containsChoice;
+    const expectedResult = true;
 
     expect(containsChoice("the choice is yours")).toEqual(expectedResult);
   });

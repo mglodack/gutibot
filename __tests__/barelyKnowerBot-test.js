@@ -1,14 +1,16 @@
-/*eslint-disable */
-var srcPath = "../src/barelyKnowerBot";
+"use strict";
+
+const srcPath = "../src/barelyKnowerBot";
 
 jest.dontMock(srcPath);
 
 describe("getMatches", function() {
   it("finds matches", function() {
-    getMatches = require(srcPath).getMatches
-
-    expectedResult = ["boer"]
+    const getMatches = require(srcPath).getMatches;
+    const expectedResult = ["boer"];
 
     expect(getMatches("boer")).toEqual(expectedResult);
   });
 });
+
+// TODO: add more...
