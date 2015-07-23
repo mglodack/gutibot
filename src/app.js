@@ -1,12 +1,12 @@
 "use strict";
 
-let express = require("express");
-let bodyParser = require("body-parser");
-let barelyKnowerBot = require("./barelyKnowerBot").bot;
-let sophieBot = require("./sophieBot").bot;
+const express = require("express");
+const bodyParser = require("body-parser");
+const barelyKnowerBot = require("./barelyKnowerBot").bot;
+const sophieBot = require("./sophieBot").bot;
 
-let app = express();
-let port = process.env.PORT || 3000;
+const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
