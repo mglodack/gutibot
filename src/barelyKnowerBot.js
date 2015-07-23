@@ -1,15 +1,15 @@
 "use strict";
 
-let splitWord = require("./stringUtils").splitWord;
+const splitWord = require("./stringUtils").splitWord;
 
 function getMatches(str) {
-  let pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
+  const pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
 
   return str.match(pattern) || [];
 }
 
 function cleanMatches(matches) {
-  let pattern = /[^\w]+$/;
+  const pattern = /[^\w]+$/;
 
   return matches.map(str => {
     return str.replace(pattern, "");
@@ -37,20 +37,20 @@ function linkify(username) {
 }
 
 function bot(req, res) {
-  let text = req.body.text;
-  let username = req.body.user_name;
-  let matches = cleanMatches(getMatches(text));
+  const text = req.body.text;
+  const username = req.body.user_name;
+  const matches = cleanMatches(getMatches(text));
 
   if (username === "slackbot" || matches.length === 0) {
     return res.status(200).end();
   }
 
-  let responseMessage = matches
+  const responseMessage = matches
     .map(splitByEr)
     .map(formatSplitWordParts)
     .join(" ");
 
-  let payload = {
+  const payload = {
     text: linkify(username) + ": " + responseMessage + " I barely know 'er!",
   };
 
