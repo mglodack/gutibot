@@ -1,18 +1,18 @@
 (function() {
   "use strict";
 
-  var splitWord = require("./src/stringUtils").splitWord;
+  var splitWord = require("./stringUtils").splitWord;
 
   function getMatches(str) {
-    var pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
+    let pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
 
     return str.match(pattern) || [];
   }
 
   function cleanMatches(matches) {
-    var pattern = /[^\w]+$/;
+    let pattern = /[^\w]+$/;
 
-    return matches.map(function(str) {
+    return matches.map(str => {
       return str.replace(pattern, "");
     });
   }
@@ -38,20 +38,20 @@
   }
 
   function bot(req, res) {
-    var text = req.body.text;
-    var username = req.body.user_name;
-    var matches = cleanMatches(getMatches(text));
+    let text = req.body.text;
+    let username = req.body.user_name;
+    let matches = cleanMatches(getMatches(text));
 
     if (username === "slackbot" || matches.length === 0) {
       return res.status(200).end();
     }
 
-    var responseMessage = matches
+    let responseMessage = matches
       .map(splitByEr)
       .map(formatSplitWordParts)
       .join(" ");
 
-    var payload = {
+    let payload = {
       text: linkify(username) + ": " + responseMessage + " I barely know 'er!",
     };
 

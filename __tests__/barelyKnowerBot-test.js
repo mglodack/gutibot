@@ -1,9 +1,11 @@
 /*eslint-disable */
-jest.dontMock("../barelyKnowerBot");
+var srcPath = "../src/barelyKnowerBot";
+
+jest.dontMock(srcPath);
 
 describe("getMatches", function() {
   it("finds matches", function() {
-    getMatches = require("../barelyKnowerBot").getMatches
+    getMatches = require(srcPath).getMatches
 
     expectedResult = ["boer"]
 
