@@ -1,44 +1,44 @@
 (function() {
   "use strict";
 
-  var getMatches = function(str) {
+  function getMatches(str) {
     var pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
 
     return str.match(pattern) || [];
-  };
+  }
 
-  var cleanMatches = function(matches) {
+  function cleanMatches(matches) {
     var pattern = /[^\w]+$/;
 
     return matches.map(function(str) {
       return str.replace(pattern, "");
     });
-  };
+  }
 
-  var splitWord = function(word) {
+  function splitWord(word) {
     var suffix = "er";
     var prefix = word.split(suffix)[0];
 
     return [prefix, suffix];
-  };
+  }
 
-  var formatSplitWordParts = function(parts) {
-  var capitalizeFirst = function(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
+  function formatSplitWordParts(parts) {
+    function capitalizeFirst(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 
     return capitalizeFirst(parts[0]) + " '" + parts[1] + "?!";
-  };
+  }
 
-  var linkify = function(username) {
+  function linkify(username) {
     if (username.indexOf(".") !== -1) {
       return "@" + username;
     } else {
       return "<@" + username + "|" + username + ">";
     }
-  };
+  }
 
-  module.exports = function(req, res) {
+  function bot(req, res) {
     var text = req.body.text;
     var username = req.body.user_name;
     var matches = cleanMatches(getMatches(text));
@@ -48,14 +48,19 @@
     }
 
     var responseMessage = matches
-    .map(splitWord)
-    .map(formatSplitWordParts)
-    .join(" ");
+      .map(splitWord)
+      .map(formatSplitWordParts)
+      .join(" ");
 
     var payload = {
       text: linkify(username) + ": " + responseMessage + " I barely know 'er!",
     };
 
     return res.status(200).json(payload);
+  }
+
+  module.exports = {
+    getMatches: getMatches,
+    bot: bot,
   };
 })();
