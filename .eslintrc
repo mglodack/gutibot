@@ -6,12 +6,14 @@
     "objectLiteralShorthandMethods": true
   },
   "env": {
-    "browser": true,
+    "es6": true,
     "node": true
   },
   "rules": {
     "comma-dangle": [1, "always-multiline"],
     "no-unused-vars": [1, {"vars": "all", "args": "after-used"}],
+    "no-var": 2,
+    "prefer-const": 1,
     "semi": 2
   }
 }

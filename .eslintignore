@@ -1,0 +1,4 @@
+# node_modules ignored by default
+
+gulpfile.js
+lib/es6-jest.js
