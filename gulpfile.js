@@ -1,10 +1,10 @@
 (function() {
   "use strict";
 
+  var babel = require("gulp-babel");
   var del = require("del");
   var gulp = require("gulp");
   var gulpList = require("gulp-task-listing");
-  var es6 = require("gulp-es6-transpiler");
 
   gulp.task("help", gulpList);
 
@@ -16,7 +16,7 @@
 
   gulp.task("build", ["clean"], function() {
     return gulp.src("src/*.js")
-      .pipe(es6())
+      .pipe(babel())
       .pipe(gulp.dest("./dist"));
   });
 })();

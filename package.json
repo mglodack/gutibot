@@ -8,14 +8,7 @@
   },
   "author": "Andrew Seward",
   "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.13.1",
-    "del": "^1.2.0",
-    "express": "^4.12.4",
-    "gulp": "^3.9.0",
-    "gulp-es6-transpiler": "^1.0.1",
-    "gulp-task-listing": "^1.0.1"
-  },
+  "homepage": "https://github.com/awseward/silly-slacker#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/awseward/silly-slacker.git"
@@ -23,20 +16,25 @@
   "bugs": {
     "url": "https://github.com/awseward/silly-slacker/issues"
   },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/lib/es6-jest",
-    "testFileExtensions": [
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json"
-    ],
-    "testDirectoryName": "__tests__"
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "del": "^1.2.0",
+    "express": "^4.12.4",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
+    "gulp-task-listing": "^1.0.1"
   },
-  "homepage": "https://github.com/awseward/silly-slacker#readme",
   "devDependencies": {
-    "es6-transpiler": "^0.7.18",
+    "babel-jest": "*",
     "jest-cli": "^0.4.16"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": ["js"],
+    "moduleFileExtensions": ["js", "json"],
+    "testDirectoryName": "__tests__"
   }
 }

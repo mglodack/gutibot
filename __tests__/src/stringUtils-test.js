@@ -1,14 +1,16 @@
-/*eslint-disable */
-jest.dontMock("../../src/stringUtils");
+"use strict";
 
-describe("splitWord", function() {
-  splitWord = require("../../src/stringUtils").splitWord;
+const srcPath = "../../src/stringUtils.js";
+jest.dontMock(srcPath);
 
-  it("splits the word by 'er'", function() {
-    expect(splitWord("boer", "er")).toEqual(["bo", "er"])
+describe("splitWord", () => {
+  const splitWord = require(srcPath).splitWord;
+
+  it("splits the word by 'er'", () => {
+    expect(splitWord("boer", "er")).toEqual(["bo", "er"]);
   });
 
-  it("is always picks the last 'er'", function() {
-    expect(splitWord("blunderer", "er")).toEqual(["blunder", "er"])
+  it("is always picks the last 'er'", () => {
+    expect(splitWord("blunderer", "er")).toEqual(["blunder", "er"]);
   });
 });

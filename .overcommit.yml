@@ -4,6 +4,8 @@ PreCommit:
     problem_on_unmodified_line: ignore
   EsLint:
     enabled: true
+  JsonSyntax:
+    enabled: true
 
   FearOfCommitment:
     enabled: true
