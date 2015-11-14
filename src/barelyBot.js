@@ -23,7 +23,7 @@ function splitByEr(word) {
 function formatSplitWordParts(parts) {
   const capFirst = strUtils.capitalizeFirstCharacter;
 
-  return `${capFirst(parts[0])} '${parts[1]}?!`;
+  return `${capFirst(parts[0])} '${parts[1]}`;
 }
 
 function getRandomInt(min, max) {
@@ -50,13 +50,13 @@ function bot(req, res) {
     return res.status(200).end();
   }
 
-  const message = matches
+  const blankEr = matches
     .map(splitByEr)
     .map(formatSplitWordParts)
     .join(" ");
 
   const payload = {
-    text: `${linkify(username)}: ${message} I barely know 'er!`,
+    text: `${linkify(username)}: ${blankEr}?! I barely know 'er!`,
   };
 
   return res.status(200).json(payload);
