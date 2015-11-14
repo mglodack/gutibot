@@ -63,6 +63,6 @@ function bot(req, res) {
 }
 
 module.exports = {
-  getMatches: getMatches,
-  bot: bot,
+  getMatches,
+  bot,
 };
