@@ -26,15 +26,17 @@
   },
   "devDependencies": {
     "babel-jest": "*",
-    "jest-cli": "^0.4.16"
-  },
-  "scripts": {
-    "test": "jest"
+    "jest-cli": "^0.7.1"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": ["js"],
-    "moduleFileExtensions": ["js", "json"],
+    "testFileExtensions": [
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
     "testDirectoryName": "__tests__"
   }
 }
