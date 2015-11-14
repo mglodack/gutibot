@@ -21,7 +21,9 @@ function splitByEr(word) {
 }
 
 function formatSplitWordParts(parts) {
-  return strUtils.capitalizeFirstCharacter(parts[0]) + " '" + parts[1] + "?!";
+  const capFirst = strUtils.capitalizeFirstCharacter;
+
+  return `${capFirst(parts[0])} '${parts[1]}?!`;
 }
 
 function getRandomInt(min, max) {
@@ -42,18 +44,19 @@ function bot(req, res) {
   const text = req.body.text;
   const username = req.body.user_name;
   const matches = cleanMatches(getMatches(text));
+  const linkify = strUtils.linkifySlackUsername;
 
   if (!shouldRespond(username, matches)) {
     return res.status(200).end();
   }
 
-  const responseMessage = matches
+  const message = matches
     .map(splitByEr)
     .map(formatSplitWordParts)
     .join(" ");
 
   const payload = {
-    text: strUtils.linkifySlackUsername(username) + ": " + responseMessage + " I barely know 'er!",
+    text: `${linkify(username)}: ${message} I barely know 'er!`,
   };
 
   return res.status(200).json(payload);
