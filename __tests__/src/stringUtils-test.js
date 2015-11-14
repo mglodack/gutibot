@@ -8,15 +8,43 @@ describe('stringUtils', () => {
     const splitWord = require(srcPath).splitWord;
 
     it("splits the word by 'er'", () => {
-      expect(splitWord("boer", "er")).toEqual(["bo", "er"]);
+      const word = 'boer';
+      const expected = ['bo', 'er'];
+      const actual = splitWord(word, 'er');
+
+      expect(actual).toEqual(expected);
     });
 
     it("is always picks the last 'er'", () => {
-      expect(splitWord("blunderer", "er")).toEqual(["blunder", "er"]);
+      const word = 'blunderer';
+      const expected = ['blunder', 'er'];
+      const actual = splitWord(word, 'er');
+
+      expect(actual).toEqual(expected);
     });
 
-    it('does not explode given empty strings', () => {
-      expect(splitWord('', '')).toEqual(['', '']);
+    it('returns ["", "er"] given an empty string', () => {
+      const word = '';
+      const expected = ['', 'er'];
+      const actual = splitWord(word, 'er');
+
+      expect(actual).toEqual(expected);
+    });
+
+    it('returns ["", "er"] given null', () => {
+      const word = null;
+      const expected = ['', 'er'];
+      const actual = splitWord(word, 'er');
+
+      expect(actual).toEqual(expected);
+    });
+
+    it('returns ["", "er"] given undefined', () => {
+      const word = undefined;
+      const expected = ['', 'er'];
+      const actual = splitWord(word, 'er');
+
+      expect(actual).toEqual(expected);
     });
   });
 
@@ -24,19 +52,35 @@ describe('stringUtils', () => {
     const capFirst = require(srcPath).capitalizeFirstCharacter;
 
     it('capitalizes the first character of a string', () => {
-      expect(capFirst('hello')).toEqual('Hello');
+      const str = 'hello';
+      const expected = 'Hello';
+      const actual = capFirst(str);
+
+      expect(actual).toEqual(expected);
     });
 
     it('returns the empty string given an empty string', () => {
-      expect(capFirst('')).toEqual('');
+      const str = '';
+      const expected = '';
+      const actual = capFirst(str);
+
+      expect(actual).toEqual(expected);
     });
 
     it('returns the empty string given null', () => {
-      expect(capFirst(null)).toEqual('');
+      const str = null;
+      const expected = '';
+      const actual = capFirst(str);
+
+      expect(actual).toEqual(expected);
     });
 
     it('returns the empty string given undefined', () => {
-      expect(capFirst(undefined)).toEqual('');
+      const str = undefined;
+      const expected = '';
+      const actual = capFirst(str);
+
+      expect(actual).toEqual(expected);
     });
   });
 
