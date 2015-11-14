@@ -1,6 +1,6 @@
 "use strict";
 
-const srcPath = "../src/barelyKnowerBot";
+const srcPath = "../../src/barelyKnowerBot";
 
 jest.dontMock(srcPath);
 
