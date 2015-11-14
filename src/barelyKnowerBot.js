@@ -36,12 +36,26 @@ function linkify(username) {
   }
 }
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function isTwentyFivePercentChance() {
+  return getRandomInt(0, 4) === 0;
+}
+
+function shouldRespond(username, matches) {
+  return username !== 'slackbot'
+    && matches.length !== 0
+    && isTwentyFivePercentChance();
+}
+
 function bot(req, res) {
   const text = req.body.text;
   const username = req.body.user_name;
   const matches = cleanMatches(getMatches(text));
 
-  if (username === "slackbot" || matches.length === 0) {
+  if (!shouldRespond(username, matches)) {
     return res.status(200).end();
   }
 
