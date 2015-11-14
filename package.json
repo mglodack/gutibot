@@ -1,5 +1,5 @@
 {
-  "name": "silly-slacker",
+  "name": "gutibot",
   "version": "0.0.0",
   "description": "",
   "main": "app.js",
@@ -8,13 +8,13 @@
   },
   "author": "Andrew Seward",
   "license": "ISC",
-  "homepage": "https://github.com/awseward/silly-slacker#readme",
+  "homepage": "https://github.com/awseward/gutibot#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awseward/silly-slacker.git"
+    "url": "git+https://github.com/awseward/gutibot.git"
   },
   "bugs": {
-    "url": "https://github.com/awseward/silly-slacker/issues"
+    "url": "https://github.com/awseward/gutibot/issues"
   },
   "dependencies": {
     "body-parser": "^1.13.1",
