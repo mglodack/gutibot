@@ -27,7 +27,7 @@ describe('stringUtils', () => {
       expect(capFirst('hello')).toEqual('Hello');
     });
 
-    it('does not explode given an empty string', () => {
+    it('returns the empty string given an empty string', () => {
       expect(capFirst('')).toEqual('');
     });
 
@@ -37,6 +37,26 @@ describe('stringUtils', () => {
 
     it('returns the empty string given undefined', () => {
       expect(capFirst(undefined)).toEqual('');
+    });
+  });
+
+  describe('linkifySlackUsername', () => {
+    const linkify = require(srcPath).linkifySlackUsername;
+
+    it('formats usernames for Slack linkification', () => {
+      const username = 'somePerson';
+      const expected = '<@somePerson|somePerson>';
+      const actual = linkify(username);
+
+      expect(actual).toEqual(expected);
+    });
+
+    it('simply prepends "@" for usernames with periods', () => {
+      const username = 'some.person';
+      const expected = '@some.person';
+      const actual = linkify(username);
+
+      expect(actual).toEqual(expected);
     });
   });
 });

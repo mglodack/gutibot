@@ -24,14 +24,6 @@ function formatSplitWordParts(parts) {
   return strUtils.capitalizeFirstCharacter(parts[0]) + " '" + parts[1] + "?!";
 }
 
-function linkify(username) {
-  if (username.indexOf(".") !== -1) {
-    return "@" + username;
-  } else {
-    return "<@" + username + "|" + username + ">";
-  }
-}
-
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -61,7 +53,7 @@ function bot(req, res) {
     .join(" ");
 
   const payload = {
-    text: linkify(username) + ": " + responseMessage + " I barely know 'er!",
+    text: strUtils.linkifySlackUsername(username) + ": " + responseMessage + " I barely know 'er!",
   };
 
   return res.status(200).json(payload);

@@ -13,7 +13,16 @@ function capitalizeFirstCharacter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function linkifySlackUsername(username) {
+  if (username.indexOf(".") !== -1) {
+    return "@" + username;
+  } else {
+    return "<@" + username + "|" + username + ">";
+  }
+}
+
 module.exports = {
   capitalizeFirstCharacter,
+  linkifySlackUsername,
   splitWord,
 };
