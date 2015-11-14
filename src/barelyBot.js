@@ -1,6 +1,6 @@
 "use strict";
 
-const splitWord = require("./stringUtils").splitWord;
+const strUtils = require('./stringUtils');
 
 function getMatches(str) {
   const pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
@@ -17,15 +17,11 @@ function cleanMatches(matches) {
 }
 
 function splitByEr(word) {
-  return splitWord(word, "er");
+  return strUtils.splitWord(word, "er");
 }
 
 function formatSplitWordParts(parts) {
-  function capitalizeFirst(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-  return capitalizeFirst(parts[0]) + " '" + parts[1] + "?!";
+  return strUtils.capitalizeFirstCharacter(parts[0]) + " '" + parts[1] + "?!";
 }
 
 function linkify(username) {
