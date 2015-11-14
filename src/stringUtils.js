@@ -18,9 +18,9 @@ function linkifySlackUsername(username) {
   if (!username) { return '@nobody'; }
 
   if (username.indexOf(".") !== -1) {
-    return "@" + username;
+    return `@${username}`;
   } else {
-    return "<@" + username + "|" + username + ">";
+    return `<@${username}|${username}>`;
   }
 }
 
