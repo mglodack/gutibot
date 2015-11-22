@@ -4,21 +4,22 @@ function firstCharEqualsB(element, index, array) {
   return element.charAt(0).toLowerCase() === 'b';
 }
 
-function doesAnyWordStartWithB(words)
+function anyWordStartWithB(words)
 {
   return words.some(firstCharEqualsB); 
 }
 
 function isMatch(str) {
-  return doesAnyWordStartWithB(str.split(' '));
+  if(!str) { return []; }
+  return anyWordStartWithB(str.split(' '));
 }
 
 function shouldRespond(username, match) {
   return username !== 'slackbot' && match;
 }
 
-function prependBootstrapper(str) {
-  return "bootstrapper_".concat(str);
+function prependBootstrap(str) {
+  return "bootstrap_".concat(str);
 }
 
 function bot(req, res) {
@@ -30,7 +31,7 @@ function bot(req, res) {
     return res.status(200).end();
   }
   const strapper = text.split(' ')
-    .map(prependBootstrapper)
+    .map(prependBootstrap)
     .join(" ");
 
   const payload = {
