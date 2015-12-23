@@ -40,8 +40,7 @@ module.exports = function (req, res, next) {
 };
 
 function send (payload, callback) {
-  const path = process.env.INCOMING_WEBHOOK_DEFINE;
-  const uri = 'https://hooks.slack.com/services' + path;
+  const uri = 'https://hooks.slack.com/services/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';
 
   request({
     uri: uri,
