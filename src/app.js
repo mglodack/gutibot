@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const barelyBot = require("./barelyBot").bot;
+const defineBot = require("./defineBot");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/doesheknower", barelyBot);
+app.post("/define", defineBot);
 
 app.use((err, req, res) => {
   console.error(err.stack);
