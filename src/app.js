@@ -11,6 +11,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/doesheknower", barelyBot);
+app.post("/define", defineBot);
 
 app.use((err, req, res) => {
   console.error(err.stack);
@@ -18,5 +19,3 @@ app.use((err, req, res) => {
 });
 
 app.listen(port, () => console.log("Listening on port " + port));
-
-app.post("/define", defineBot);
