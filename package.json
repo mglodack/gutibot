@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "babel-jest": "*",
-    "jest-cli": "^0.7.1"
+    "jest-cli": "^0.7.1",
+    "unirest": "^0.4.2"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
