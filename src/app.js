@@ -10,10 +10,14 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+  res.send('Hello! This is the Gutibot. Are you lost?');
+});
+
 app.post("/doesheknower", barelyBot);
 app.post("/define", defineBot);
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(400).send(err.message);
 });
