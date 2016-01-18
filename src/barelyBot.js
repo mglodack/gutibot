@@ -1,6 +1,7 @@
 "use strict";
 
 const strUtils = require('./stringUtils');
+const gutiBot = require('./gutiBot');
 
 function getMatches(str) {
   const pattern = /(\w{2,}er)[^\w]+|(\w{2,}er)$/gi;
@@ -47,7 +48,7 @@ function bot(req, res) {
   const linkify = strUtils.linkifySlackUsername;
 
   if (!shouldRespond(username, matches)) {
-    return res.status(200).end();
+    return gutiBot.respondOk(res);
   }
 
   const blankEr = matches
@@ -55,11 +56,9 @@ function bot(req, res) {
     .map(formatSplitWordParts)
     .join(" ");
 
-  const payload = {
-    text: `${linkify(username)}: ${blankEr}?! I barely know 'er!`,
-  };
+  const message = `${linkify(username)}: ${blankEr}?! I barely know 'er!`;
 
-  return res.status(200).json(payload);
+  return gutiBot.respondWith(res, message);
 }
 
 module.exports = {
